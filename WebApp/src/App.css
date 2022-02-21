@@ -1,0 +1,65 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #5c5b5b;
+}
+
+.paramsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #5c5b5b;
+}
+
+
+.inputContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+.inputTitle{
+  flex:1;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.inputNumber{
+  flex: 1;
+  background-color: #414141;
+  color: white;
+  border-radius: 10%;
+}
+
+.inputSelect{
+  flex:1;
+  background-color: #414141;
+  color: white;
+  border-radius: 10%;
+}
+.inputOption{
+  flex:1;
+  color: white;
+}
+.submitContainer{
+  flex:1;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  transition-duration: 0.4s;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.submitContainer:hover {
+  background-color: #5bca5f; /* Green */
+  color: #999999;
+}
