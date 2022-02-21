@@ -5,8 +5,17 @@
   flex-direction: row;
   flex-wrap: wrap;
   background-color: #5c5b5b;
+  height: 100%;
 }
-
+.appHeader{
+  flex:1;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  font-size: larger;
+  background-color: #414141;
+  font-weight: bolder;
+}
 .paramsContainer {
   display: flex;
   justify-content: center;
@@ -20,15 +29,26 @@
 .inputContainer{
   display: flex;
   flex-direction: column;
+  flex-basis: 20%;
   align-items: center;
   padding: 1rem;
 }
 .inputTitle{
   flex:1;
   font-size: large;
+  color: white;
   font-weight: bolder;
 }
-
+.footer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.resultsContainer{
+  display: flex;
+  background-color: #5c5b5b;
+  flex-direction: row;
+}
 .inputNumber{
   flex: 1;
   background-color: #414141;
@@ -58,6 +78,18 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+}
+.algCard{
+  flex:1;
+  background-color: #414141;
+  padding: 2%;
+  border-radius: 10%;
+  text-align: center;
+  border: 5% #313131;
+}
+.algCardP{
+  white-space:nowrap;
+  overflow:hidden;
 }
 .submitContainer:hover {
   background-color: #5bca5f; /* Green */
