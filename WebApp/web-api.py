@@ -15,7 +15,7 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 api = CORS(app, resources={r"*": {"origins": "*"}})
-dataset = pd.read_csv('dataset/healthcare-dataset-stroke-data.csv')
+dataset = pd.read_csv('healthcare-dataset-stroke-data.csv')
 df_dataset = pd.DataFrame(data=dataset)
 
 # Dropping 'id' column
