@@ -48,6 +48,8 @@
   display: flex;
   background-color: #5c5b5b;
   flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
 }
 .inputNumber{
   flex: 1;
