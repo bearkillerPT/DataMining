@@ -16,7 +16,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 api = CORS(app, resources={r"*": {"origins": "*"}})
 #for my rasp service
-rasp_dir = "/home/pi/DataMining/WebApp"
+rasp_dir = "/home/pi/DataMining/WebApp/"
 dataset = pd.read_csv(rasp_dir + 'healthcare-dataset-stroke-data.csv')
 df_dataset = pd.DataFrame(data=dataset)
 
