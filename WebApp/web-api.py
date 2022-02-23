@@ -73,7 +73,7 @@ def get():
     parser.add_argument('heart_disease', type=int)
     parser.add_argument('ever_married', type=int)
     parser.add_argument('work_type', type=int)
-    parser.add_argument('residence_type', type=int)
+    parser.add_argument('Residence_type', type=int)
     parser.add_argument('avg_glucose_level', type=int)
     parser.add_argument('bmi', type=int)
     parser.add_argument('smoking_status', type=int)
@@ -110,4 +110,4 @@ def get():
 
 if __name__ == '__main__':
     from waitress import serve
-    serve(app, host="0.0.0.0", port=5000)
+    serve(app, host="0.0.0.0", port=3003)
