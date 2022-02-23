@@ -104,6 +104,10 @@ function App() {
         </div>
 
       </div>
+      <div className='notebookContainer'>
+        <a href="/DataMiningProject.html" className='algCardTitle'>The jupyter notebook, also available here</a>
+        <iframe src='/DataMiningProject.html' className='notebookIframe'/>
+      </div>
     </div>
   );
 }
