@@ -72,7 +72,7 @@ function App() {
       </div>
       <div className='footer'>
         <div className='submitContainer' onClick={() => {
-          let query = "http://127.0.0.1:3003/?age=" + age + "&gender=" + gender + "&hypertension=" + hypertension + "&heart_disease=" + heart_disease + "&ever_married=" + ever_married + "&work_type=" + work_type + "&Residence_type=" + residence_type + "&avg_glucose_level=" + avg_glucose_level + "&bmi=" + bmi + "&smoking_status=" + smoking_status
+          let query = "https://edapi.bearkillerpt.xyz/?age=" + age + "&gender=" + gender + "&hypertension=" + hypertension + "&heart_disease=" + heart_disease + "&ever_married=" + ever_married + "&work_type=" + work_type + "&Residence_type=" + residence_type + "&avg_glucose_level=" + avg_glucose_level + "&bmi=" + bmi + "&smoking_status=" + smoking_status
           console.log(query)
 
           fetch(query).then(res => res.json()).then(res => { setRes(res); console.log(res) })
