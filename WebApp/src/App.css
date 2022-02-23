@@ -2,15 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   background-color: #5c5b5b;
   height: 100%;
 }
 .appHeader{
   flex:1;
   text-align: center;
-  color: white;
+  width: 100%;
+    color: white;
   padding: 1rem;
   font-size: larger;
   background-color: #414141;
@@ -82,14 +82,37 @@
 .algCard{
   flex:1;
   background-color: #414141;
-  padding: 2%;
+  padding: 1rem;
+  border-radius: 10%;
+  text-align: left;
+  border: 5% #313131;
+}
+.algCardContent{
+  flex:1;
+  background-color: #363636;
+  padding: 0.5rem;
   border-radius: 10%;
   text-align: center;
-  border: 5% #313131;
+  justify-content: center;
+  align-items: center;
+}
+.algCardTitle{
+  white-space:nowrap;
+  color: white;
+  overflow:hidden;
+  font-weight: bold;
+  font-size: large;
 }
 .algCardP{
   white-space:nowrap;
+  color: white;
   overflow:hidden;
+}
+.algTypeDivider{
+  flex: 1;
+  height: 1vh;
+  width: 100%;
+  background-color: cornflowerblue;
 }
 .submitContainer:hover {
   background-color: #5bca5f; /* Green */

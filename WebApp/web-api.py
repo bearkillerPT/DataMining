@@ -1,4 +1,5 @@
 from tokenize import Number
+from imblearn.over_sampling import SMOTE
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -8,9 +9,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
-import sklearn.metrics as metrics
 from flask import Flask, jsonify, request
-from flask_restful import Resource, Api, reqparse
+from flask_restful import reqparse
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -31,19 +31,36 @@ for categoric_var in categoric_vars:
     df_dataset[categoric_var].replace({label: int(idx) for idx, label in enumerate(
         np.unique(df_dataset[categoric_var]))}, inplace=True)
 
+oversample = SMOTE()
+over_x, over_y = oversample.fit_resample(df_dataset.drop(
+    'stroke', axis=1), df_dataset['stroke'].astype('int'))
+oversampled_data = over_x.join(over_y)
+
+
 df_dataset.loc[df_dataset["stroke"] ==
                0] = df_dataset.loc[df_dataset["stroke"] == 0].sample(249)
 df_dataset.dropna(inplace=True)
 df_dataset.reset_index(drop=True, inplace=True)
 x_train, x_test, y_train, y_test = train_test_split(df_dataset.drop(
     'stroke', axis=1), df_dataset['stroke'].astype('int'), test_size=0.2)
+over_x_train, over_x_test, over_y_train, over_y_test = train_test_split(
+    over_x, over_y, test_size=0.2)
 
-logistic_cls = LogisticRegression(max_iter=1000).fit(x_train, y_train)
-decision_tree_cls = tree.DecisionTreeClassifier().fit(x_train, y_train)
-random_forest_cls = RandomForestClassifier().fit(x_train, y_train)
-k_nearest_neighbors_cls = KNeighborsClassifier().fit(x_train, y_train)
-svm_cls = clf = SVC(kernel='linear', probability=True).fit(x_train, y_train)
-naive_bayes_cls = clf = GaussianNB().fit(x_train, y_train)
+under_logistic_cls = LogisticRegression(max_iter=1000).fit(x_train, y_train)
+over_logistic_cls = LogisticRegression(
+    max_iter=1000).fit(over_x_train, over_y_train)
+under_decision_tree_cls = tree.DecisionTreeClassifier().fit(x_train, y_train)
+over_decision_tree_cls = tree.DecisionTreeClassifier().fit(over_x_train,
+                                                           over_y_train)
+under_random_forest_cls = RandomForestClassifier().fit(x_train, y_train)
+over_random_forest_cls = RandomForestClassifier().fit(over_x_train, over_y_train)
+under_k_nearest_neighbors_cls = KNeighborsClassifier().fit(x_train, y_train)
+over_k_nearest_neighbors_cls = KNeighborsClassifier().fit(over_x_train, over_y_train)
+under_svm_cls = SVC(kernel='rbf', probability=True).fit(x_train, y_train)
+over_svm_cls = SVC(kernel='rbf', probability=True).fit(
+    over_x_train, over_y_train)
+under_naive_bayes_cls = GaussianNB().fit(x_train, y_train)
+over_naive_bayes_cls = GaussianNB().fit(over_x_train, over_y_train)
 
 
 @app.route("/")
@@ -64,12 +81,30 @@ def get():
     args = pd.DataFrame(data=args, index=[0])
 
     return jsonify({
-        "Logistic Regression":  int(logistic_cls.predict(args)[0]),
-        "Decision Tree": int(decision_tree_cls.predict(args)[0]),
-        "Random Forest": int(random_forest_cls.predict(args)[0]),
-        "K_Nearest Neighbors": int(k_nearest_neighbors_cls.predict(args)[0]),
-        "SVM": int(svm_cls.predict(args)[0]),
-        "Naive_Bayes": int(naive_bayes_cls.predict(args)[0])
+        "Logistic Regression": {
+            "Under-Sampling":  int(under_logistic_cls.predict(args)[0]),
+            "Over-Sampling":  int(over_logistic_cls.predict(args)[0])
+        },
+        "Decision Tree": {
+            "Under-Sampling": int(under_decision_tree_cls.predict(args)[0]),
+            "Over-Sampling": int(over_decision_tree_cls.predict(args)[0])
+        },
+        "Random Forest": {
+            "Under-Sampling": int(under_random_forest_cls.predict(args)[0]),
+            "Over-Sampling": int(over_random_forest_cls.predict(args)[0])
+        },
+        "K_Nearest Neighbors": {
+            "Under-Sampling": int(under_k_nearest_neighbors_cls.predict(args)[0]),
+            "Over-Sampling": int(over_k_nearest_neighbors_cls.predict(args)[0])
+        },
+        "SVM": {
+            "Under-Sampling": int(under_svm_cls.predict(args)[0]),
+            "Over-Sampling": int(over_svm_cls.predict(args)[0])
+        },
+        "Naive_Bayes": {
+            "Under-Sampling": int(under_naive_bayes_cls.predict(args)[0]),
+            "Over-Sampling": int(over_naive_bayes_cls.predict(args)[0])
+        }
     })
 
 
