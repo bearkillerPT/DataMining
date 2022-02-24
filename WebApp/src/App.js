@@ -92,15 +92,13 @@ function App() {
                       Object.keys(res[ml_alg]).map(
                         (sample_type, idx2) => {
                           return (
-                            <div>
+                            <div className='algTypeDividerContainer'>
                               <div className='algCardContent' key={idx2}>
-                                <p className='algCardP'>{sample_type}</p>
+                                <p className='algCardP'>{sample_type}:</p>
                                 <p className='algCardP'>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
                               </div>
                               {idx2 != Object.keys(res[ml_alg]).length - 1 &&
-                                <div className='algTypeDividerContainer'>
                                   <div className='algTypeDivider' />
-                                </div>
                               }
                             </div>
                           );
