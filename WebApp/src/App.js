@@ -79,34 +79,36 @@ function App() {
         }}>
           Submit!
         </div>
-        <div className='resultsContainer'>
           {res &&
-            Object.keys(res).map((ml_alg, idx) => {
-              return (
-                <div className='algCard' key={idx}>
-                  <p className='algCardTitle'>{ml_alg}</p>
-                  {
-                    Object.keys(res[ml_alg]).map(
-                      (sample_type, idx2) => {
-                        return (
-                          <div>
-                            <div className='algCardContent' key={idx2}>
-                              <p className='algCardP'>{sample_type}</p>
-                              <p className='algCardP'>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
-                            </div>
-                            {idx2 != Object.keys(res[ml_alg]).length - 1 &&
-                              <div className='algTypeDividerContainer'>
-                                <div className='algTypeDivider' />
+            <div className='resultsContainerContainer'>
+              <p className='algCardTitle'>Predictions: </p>
+              <div className='resultsContainer'>
+              {
+              Object.keys(res).map((ml_alg, idx) => {
+                return (
+                  <div className='algCard' key={idx}>
+                    <p className='algCardTitle'>{ml_alg}</p>
+                    {
+                      Object.keys(res[ml_alg]).map(
+                        (sample_type, idx2) => {
+                          return (
+                            <div>
+                              <div className='algCardContent' key={idx2}>
+                                <p className='algCardP'>{sample_type}</p>
+                                <p className='algCardP'>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
                               </div>
-                            }
-                          </div>
-                        );
-                      })}</div>
-              )
-            })
+                              {idx2 != Object.keys(res[ml_alg]).length - 1 &&
+                                <div className='algTypeDividerContainer'>
+                                  <div className='algTypeDivider' />
+                                </div>
+                              }
+                            </div>
+                          );
+                        })}</div>
+                )
+              })
+            }</div></div>
           }
-        </div>
-
       </div>
       <div className='notebookContainer'>
         <a href="https://ed.bearkillerpt.xyz/Data_Mining_Report.pdf" className='algCardTitle'>Resume Report available here!</a>
