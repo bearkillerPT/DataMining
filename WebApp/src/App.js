@@ -42,7 +42,7 @@ function App() {
       <div className='appHeader'>
         Machine Learning Algorithm Models for stroke prediction
       </div>
-      <div className='appHeader'>
+      <div className='appHeaderSub appHeader'>
         Input paramethers
       </div>
       <div className="paramsContainer">

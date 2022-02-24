@@ -12,9 +12,13 @@
   width: 100%;
     color: white;
   padding: 1rem 0;
-  font-size: larger;
+  font-size: x-large;
   background-color: #414141;
   font-weight: bolder;
+}
+.appHeaderSub{
+  font-size: medium;
+  background-color: #464949;
 }
 .paramsContainer {
   display: flex;
