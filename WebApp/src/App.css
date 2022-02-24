@@ -84,10 +84,11 @@
 .algCard{
   flex:1;
   background-color: #414141;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 10%;
   text-align: left;
-  border: 5% #313131;
+  border: 0.5rem 0.5rem #424242;
+  border-style: dashed;
 }
 .algCardContent{
   flex:1;
