@@ -90,8 +90,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 0.5rem 0.5rem #424242;
-  border-style: dashed;
+  border-width: 0.5rem;
+  border-color: #424242;
+  border-style: solid;
 }
 .algCardContent{
   flex:1;
