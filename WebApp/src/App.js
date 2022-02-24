@@ -89,15 +89,19 @@ function App() {
                     Object.keys(res[ml_alg]).map(
                       (sample_type, idx2) => {
                         return (
-                          <div className='algCardContent' key={idx2}>
-                            <p className='algCardP'>{sample_type}</p>
-                            <p className='algCardP'>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
-                          {idx2 != Object.keys(res[ml_alg]).length - 1 &&
-                            <div className='algTypeDivider'/>
-                          }
+                          <div>
+                            <div className='algCardContent' key={idx2}>
+                              <p className='algCardP'>{sample_type}</p>
+                              <p className='algCardP'>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
+                            </div>
+                            {idx2 != Object.keys(res[ml_alg]).length - 1 &&
+                              <div className='algTypeDividerContainer'>
+                                <div className='algTypeDivider' />
+                              </div>
+                            }
                           </div>
                         );
-                  })}</div>
+                      })}</div>
               )
             })
           }
@@ -105,10 +109,10 @@ function App() {
 
       </div>
       <div className='notebookContainer'>
-      <a href="https://ed.bearkillerpt.xyz/Data_Mining_Report.pdf" className='algCardTitle'>Resume Report available here!</a>
-      <br/>
+        <a href="https://ed.bearkillerpt.xyz/Data_Mining_Report.pdf" className='algCardTitle'>Resume Report available here!</a>
+        <br />
         <a href="https://ed.bearkillerpt.xyz/notebook" className='algCardTitle'>The jupyter notebook, also available here!</a>
-        <iframe src='https://ed.bearkillerpt.xyz/notebook' className='notebookIframe'/>
+        <iframe src='https://ed.bearkillerpt.xyz/notebook' className='notebookIframe' />
       </div>
     </div>
   );
