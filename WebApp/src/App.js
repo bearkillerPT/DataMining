@@ -57,7 +57,7 @@ function App() {
           else return (
             <div className='inputContainer' key={idx}>
               <p className='inputTitle'>{param}</p>
-              <select className='inputSelect' onChange={res => paramState[param](params[param][res.target.value])}>{
+              <select className='form-select inputSelect' onChange={res => paramState[param](params[param][res.target.value])}>{
                 Object.keys(params[param]).map((param2, idx2) => {
                   return (
                     <option className='inputOption' key={idx2} value={param2}>{param2}</option>
@@ -71,7 +71,7 @@ function App() {
         }
       </div>
       <div className='footer'>
-        <div className='submitContainer' onClick={() => {
+        <div className='btn btn-success submitContainer submitContainer' onClick={() => {
           let query = "https://edapi.bearkillerpt.xyz/?age=" + age + "&gender=" + gender + "&hypertension=" + hypertension + "&heart_disease=" + heart_disease + "&ever_married=" + ever_married + "&work_type=" + work_type + "&Residence_type=" + residence_type + "&avg_glucose_level=" + avg_glucose_level + "&bmi=" + bmi + "&smoking_status=" + smoking_status
           console.log(query)
 
