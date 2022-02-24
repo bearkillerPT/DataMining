@@ -43,7 +43,8 @@ function App() {
         Machine Learning Algorithm Models for stroke prediction
       </div>
       <div className='appHeaderSub appHeader'>
-        Input paramethers
+        This WebApp was built for the Data Mining course of my Informatiics Engineering Masters.
+        Here 6 different Machine Learning Algorithms with 2 different data balancing tecniques will predict if there is or isn't a risk of having a stroke!
       </div>
       <div className="paramsContainer">
         {Object.keys(params).map((param, idx) => {
@@ -51,7 +52,7 @@ function App() {
             return (
               <div className='inputContainer' key={idx}>
                 <p className='inputTitle'>{param}</p>
-                <input defaultValue={20} className='inputNumber' type={'number'} onChange={res => paramState[param](res.target.value)} />
+                <input defaultValue={20} className='form-control inputSelect' type={'number'} onChange={res => paramState[param](res.target.value)} />
               </div>
             )
           else return (
