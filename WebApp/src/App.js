@@ -105,7 +105,7 @@ function App() {
 
       </div>
       <div className='notebookContainer'>
-      <a href="https://ed.bearkillerpt.xyz/report.pdf" className='algCardTitle'>Resume Report available here!</a>
+      <a href="https://ed.bearkillerpt.xyz/Data_Mining_Report.pdf" className='algCardTitle'>Resume Report available here!</a>
       <br/>
         <a href="https://ed.bearkillerpt.xyz/notebook" className='algCardTitle'>The jupyter notebook, also available here!</a>
         <iframe src='https://ed.bearkillerpt.xyz/notebook' className='notebookIframe'/>
