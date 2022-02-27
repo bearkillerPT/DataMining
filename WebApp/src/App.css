@@ -60,6 +60,10 @@
   border-width: 0.3rem;
   border-color: #424242;
   border-style: dashed;
+
+}
+.algCardContainer{
+  padding: 0.5rem;
 }
 .resultsContainerContainer{
   display: flex;
@@ -144,6 +148,10 @@
   width: 90%;
   border-radius: 25%;
   background-color: cornflowerblue;
+}
+
+.algCardRes{
+  border-radius: 5%;
 }
 
 .notebookContainer{

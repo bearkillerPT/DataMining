@@ -80,34 +80,36 @@ function App() {
         }}>
           Submit!
         </div>
-          {res &&
-            <div className='resultsContainerContainer'>
-              <p className='algCardTitle'>Predictions: </p>
-              <div className='resultsContainer'>
+        {res &&
+          <div className='resultsContainerContainer'>
+            <p className='algCardTitle'>Predictions: </p>
+            <div className='resultsContainer'>
               {
-              Object.keys(res).map((ml_alg, idx) => {
-                return (
-                  <div className='algCard' key={idx}>
-                    <p className='algCardTitle'>{ml_alg}</p>
-                    {
-                      Object.keys(res[ml_alg]).map(
-                        (sample_type, idx2) => {
-                          return (
-                            <div className='algTypeDividerContainer'>
-                              <div className='algCardContent' key={idx2}>
-                                <p className='algCardP'>{sample_type}:</p>
-                                <p className='algCardP'>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
-                              </div>
-                              {idx2 != Object.keys(res[ml_alg]).length - 1 &&
-                                  <div className='algTypeDivider' />
-                              }
-                            </div>
-                          );
-                        })}</div>
-                )
-              })
-            }</div></div>
-          }
+                Object.keys(res).map((ml_alg, idx) => {
+                  return (
+                    <div className='algCardContainer'>
+                      <div className='algCard' key={idx}>
+                        <p className='algCardTitle'>{ml_alg}</p>
+                        {
+                          Object.keys(res[ml_alg]).map(
+                            (sample_type, idx2) => {
+                              return (
+                                <div className='algTypeDividerContainer'>
+                                  <div className='algCardContent' key={idx2}>
+                                    <p className='algCardP'>{sample_type}:</p>
+                                    <p className='algCardP algCardRes' style={{ backgroundColor: res[ml_alg][sample_type] == 0 ? '#14ce95' : '#eb5c52' }}>{res[ml_alg][sample_type] == 0 ? "No risk!" : "Risk of Stroke!"}</p>
+                                  </div>
+                                  {idx2 != Object.keys(res[ml_alg]).length - 1 &&
+                                    <div className='algTypeDivider' />
+                                  }
+                                </div>
+                              );
+                            })}</div>
+                    </div>
+                  )
+                })
+              }</div></div>
+        }
       </div>
       <div className='notebookContainer'>
         <a href="https://ed.bearkillerpt.xyz/Data_Mining_Report.pdf" className='algCardTitle'>Resume Report available here!</a>
