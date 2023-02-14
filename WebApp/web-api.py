@@ -16,7 +16,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 api = CORS(app, resources={r"*": {"origins": "*"}})
 #for my rasp service
-rasp_dir = "/home/pi/DataMining/WebApp/"
+rasp_dir = "~/DataMining/WebApp/"
 dataset = pd.read_csv(rasp_dir + 'healthcare-dataset-stroke-data.csv')
 df_dataset = pd.DataFrame(data=dataset)
 
@@ -33,7 +33,7 @@ for categoric_var in categoric_vars:
     df_dataset[categoric_var].replace({label: int(idx) for idx, label in enumerate(
         np.unique(df_dataset[categoric_var]))}, inplace=True)
 
-oversample = SMOTE()
+oversample = SMOTE(random_state=0)
 over_x, over_y = oversample.fit_resample(df_dataset.drop(
     'stroke', axis=1), df_dataset['stroke'].astype('int'))
 oversampled_data = over_x.join(over_y)
@@ -69,16 +69,16 @@ over_naive_bayes_cls = GaussianNB().fit(over_x_train, over_y_train)
 @cross_origin()
 def get():
     parser = reqparse.RequestParser()
-    parser.add_argument('gender', type=int)
-    parser.add_argument('age', type=int)
-    parser.add_argument('hypertension', type=int)
-    parser.add_argument('heart_disease', type=int)
-    parser.add_argument('ever_married', type=int)
-    parser.add_argument('work_type', type=int)
-    parser.add_argument('Residence_type', type=int)
-    parser.add_argument('avg_glucose_level', type=int)
-    parser.add_argument('bmi', type=int)
-    parser.add_argument('smoking_status', type=int)
+    parser.add_argument('gender', type=int, location='args')
+    parser.add_argument('age', type=int, location='args')
+    parser.add_argument('hypertension', type=int, location='args')
+    parser.add_argument('heart_disease', type=int, location='args')
+    parser.add_argument('ever_married', type=int, location='args')
+    parser.add_argument('work_type', type=int, location='args')
+    parser.add_argument('Residence_type', type=int, location='args')
+    parser.add_argument('avg_glucose_level', type=int, location='args')
+    parser.add_argument('bmi', type=int, location='args')
+    parser.add_argument('smoking_status', type=int, location='args')
     args = parser.parse_args()
     args = pd.DataFrame(data=args, index=[0])
 
